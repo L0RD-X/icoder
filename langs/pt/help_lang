@@ -1,0 +1,22 @@
+    Modo se uso:
+        icoder [comando] <tipo> dado
+    
+    Comandos:
+        encode             irá encodar o'que passar
+        decode             irá desencodar o'que passar
+
+    Tipos:
+        --url              recebe uma url(link)
+        --char             recebe uma letra ou simbolo
+        --arquivo ou -a    recebe arquivo com lista se link (aceita os parametros -l ou -s)
+
+        -l                 Lista os links
+        -s                 salva em outro arquivo
+
+    Exemplo: 
+        icoder encode --url https://google.com
+        icoder encode --char /
+
+        icoder decode --url https%3A%2F%2Fgoogle.com
+        icoder decode --char %2F
+        icoder encode -a arquivo.txt -l
