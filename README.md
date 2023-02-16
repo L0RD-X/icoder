@@ -1,6 +1,7 @@
 
 # Icoder
-Essa ferramenta é foi feita para facilitar encodar e decodar url e caracteres especiais
+Essa ferramenta foi feita para facilitar encodar e decodar caracteres especiais de url 
+<br>Ex: `/`,`\`,`:`, `algumas letras`
 # Instalação
 Execute o menu de instalação com o comando:
 ```
