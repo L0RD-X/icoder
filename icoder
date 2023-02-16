@@ -1,0 +1,153 @@
+#!/usr/bin/env python
+#
+# Nome: Icoder
+# Autor: @L0RD-X
+# versão: 1 0
+# data: 15/02/2023
+# 
+#
+#===========================
+
+from urllib.parse import quote, quote_plus, unquote, unquote_plus
+from sys import argv as dado
+from sys import stdout as s
+from os import system as cmd
+from time import sleep as tp
+from datetime import datetime as h
+from pathlib import Path
+
+hora = h.now()
+alerta = f"\n\033[1;33m Para acessar o manual acrescente -h ou --help\033[1;0m\n"
+
+def wr(txt, v=0.01):
+    for l in txt:
+        s.write(l)
+        s.flush()
+        tp(v)
+
+def prog():
+    wr(f"Encodando/Decodando: [\033[1;32m")
+    wr("#" * 30, 0.05)
+    wr("\033[1;0m]-100%")
+
+def encode():
+    url = quote_plus(dado[3])
+    char = quote(dado[3], safe="")
+
+
+    if dado[2] == "--url":
+        prog()
+        print(f"\nLink Encodado: \033[1;4;34m{url}\033[1;0m ")
+
+    elif dado[2] == "--char":
+        prog()
+        print(f"\nCaractere Encodado: \033[1;4;34m{char}\033[1;0m ", )
+    elif dado[2] == "-a" or dado[2] == "--arquivo":
+        prog()
+        with open(dado[3], "r") as file:
+            arquivo = file.readlines()
+
+        try:
+            if dado[4] == "-l":
+                for link in arquivo:
+                    code = quote_plus(link)
+                    print(f"\nLink Encodado: \033[1;4;34m{code}\033[1;0m ")
+            elif dado[4] == "-s":
+                nome =  dado[3].replace(".txt", "")
+                horas = hora.strftime("%H:%S")
+                new_name = nome + "_"+ horas + "_encodado.txt"
+
+                with open(new_name, "a") as novo:
+                    for link in arquivo:
+                        code = quote_plus(link) + "\n"
+                        novo.write(code)
+                print(f"\r Encodado: \nnome: {new_name}")
+
+        except IndexError:
+            for link in arquivo:
+                code = quote_plus(link)
+                print(f"\nLink Encodado: \033[1;4;34m{code}\033[1;0m ")
+    else:
+        print(alerta)
+
+
+
+def decode():
+    url = unquote_plus(dado[3])
+    char = unquote(dado[3])
+
+
+    if dado[2] == "--url":
+        prog()
+        print(f"\nLink Decodado: \033[1;4;34m{url}\033[1;0m ")
+
+    elif dado[2] == "--char":
+        prog()
+        print(f"\nCaractere Decodado: \033[1;4;34m{char}\033[1;0m ", )
+    elif dado[2] == "-a" or dado[2] == "--arquivo":
+        prog()
+        with open(dado[3], "r") as file:
+            arquivo = file.readlines()
+
+        try:
+            if dado[4] == "-l":
+                for link in arquivo:
+                    filtrado = link.replace("\n","")
+                    code = unquote_plus(filtrado)
+                    print(f"\nLink Decodado: \033[1;4;34m{code}\033[1;0m ")
+            elif dado[4] == "-s":
+                nome =  dado[3].replace(".txt", "")
+                horas = hora.strftime("%H:%S")
+                new_name = nome + "_"+ horas + "_decodado.txt"
+
+                with open(new_name, "a") as novo:
+                    for link in arquivo:
+                        code = unquote_plus(link) + "\n"
+                        novo.write(code)
+                print(f"\r Decodado: \nnome: {new_name}")
+
+        except IndexError:
+            for link in arquivo:
+                filtrado = link.replace("\n","")
+                code = unquote_plus(filtrado)
+                print(f"\nLink Decodado: \033[1;4;34m{code}\033[1;0m ")
+    else:
+        print(alerta)
+def help():
+    pc = "/usr/lib/icoder/help_lang"
+    termux = "/data/data/com.termux/files/usr/lib/icoder/help_lang"
+    p = Path(pc)
+    t = Path(termux)
+    if p.is_file() == True:
+        arquivo = pc
+
+    elif t.is_file() == True:
+        arquivo = termux
+    else:
+        print("Algo deu errado na instalação")
+
+    with open(arquivo, "r") as a:
+        help = a.readlines()
+        print("\033[1;33m")
+        for linha in help:
+            ajuda = linha.replace("\n", "")
+            print(ajuda)
+        print("\033[1;0m")
+
+
+def verify():
+    if dado[1] == "encode":
+        encode()
+    elif dado[1] == "decode":
+        decode()
+    elif dado[1] == "--help" or dado[1] == "-h":
+        help()
+    else:
+        print(alerta)
+
+    
+try:
+    verify()
+except IndexError:
+    print(alerta)
+

@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+#
+loct=/data/data/com.termux/files/usr
+locp=/usr
+
+function itrm() {
+    data=$(dialog --menu "Selecione seu idioma" 12 45 25 1 "Pt-Br" 2 "En-US" --stdout)
+    case $data in
+        1) lang="pt";;
+        2) lang="en";;
+    esac
+
+    mkdir "$loct/lib/icoder"
+    sleep 1
+    cp "langs/$lang/help_lang" "$loct/lib/icoder/"
+    for i in {1..100}
+    do
+    sleep 0.01 &&
+    echo $i
+    done | dialog --title 'Instalação ICoder' --guage 'Instalando Aguarde...' 10 100
+ 
+    dialog --title "Instalação Concluída" --msgbox "Digite icoder --help ou -h para acessar o Manual" 10 60
+    cp icoder "$loct/bin/"
+}
+
+function dt() {
+    rm "$loct/bin/icoder"
+    rm -rf "$loct/lib/icoder"
+    dialog --title "Concluido" --msgbox "ICoder Desintalado" 10 60
+}
+
+function ipc() {
+    data=$(dialog --menu "Selecione seu idioma" 12 45 25 1 "Pt-Br" 2 "En-US" --stdout)
+    case $data in
+        1) lang="pt";;
+        2) lang="en";;
+    esac
+
+    mkdir "$locp/lib/icoder"
+    sleep 1
+    cp "langs/$lang/help_lang" "$locp/lib/icoder/"
+    for i in {1..100}
+    do
+    sleep 0.01 &&
+    echo $i
+    done | dialog --title 'Instalação ICoder' --guage 'Instalando Aguarde...' 10 100
+ 
+    dialog --title "Instalação Concluída" --msgbox "Digite icoder --help ou -h para acessar o Manual" 10 60
+    cp icoder "$locp/bin/"
+}
+
+function dpc() {
+    rm "$locp/bin/icoder"
+    rm -rf "$locp/lib/icoder"
+    dialog --title "Concluido" --msgbox "ICoder Desintalado" 10 60
+}
+function run() {
+    chmod +x icoder
+    clear
+    choice=$(dialog --menu "Gerenciamento ICoder" 12 45 25 1 "Instalar no PC" 2 "instalar no Termux" 3 "Desisntalar do PC" 4 "Desintalar do Termux" --stdout)
+    case $choice in
+        1) ipc ;;
+        2) itrm ;;
+        3) dpc ;;
+        4) dt ;;
+    esac
+
+
+}
+
+run
