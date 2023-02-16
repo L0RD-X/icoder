@@ -42,7 +42,7 @@ def encode():
     elif dado[2] == "--char":
         prog()
         print(f"\nCaractere Encodado: \033[1;4;34m{char}\033[1;0m ", )
-    elif dado[2] == "-a" or dado[2] == "--arquivo":
+    elif dado[2] == "-a" or dado[2] == "--arquivo" or dado[2] == "-f" or dado[2] == "--file":
         prog()
         with open(dado[3], "r") as file:
             arquivo = file.readlines()
