@@ -1,0 +1,22 @@
+     How to use:
+         icoder [command] <type> data
+    
+     Commands:
+         encode         will encode what to pass
+         decode         will uncode what to pass
+
+     Types:
+         --url           takes a url(link)
+         --char          takes a letter or symbol
+         --arquivo or -a    receive file with link list (accepts -l or -s parameters)
+
+         -l              print the links
+         -s              saves output to another file
+
+     Example:
+         icoder encode --url https://google.com
+         icoder encode --char /
+
+         icoder decode --url https%3A%2F%2Fgoogle.com
+         icoder decode --char %2F
+         icoder encode -a file.txt -l
