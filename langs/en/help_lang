@@ -8,7 +8,7 @@
      Types:
          --url           takes a url(link)
          --char          takes a letter or symbol
-         --arquivo or -a    receive file with link list (accepts -l or -s parameters)
+         --file or -f    receive file with link list (accepts -l or -s parameters)
 
          -l              print the links
          -s              saves output to another file
