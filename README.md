@@ -11,7 +11,7 @@ Depois disso selecione Instalar (pc ou termux, depende de onde está rodando a f
 <img src="shots/menu.jpg" style="width:100px" alt="menu"/><br>
 Na próxima tela verá um menu de seleção de idiomas pro manual (só precisará destes passos 1 vez) <br>
 <img src="shots/lang.jpg" style="width:100px" alt="lang"/><br>
-Após isso tudo será configurado automaticamente incluindo manual no idioma selecionando<br>
+Após isso tudo será configurado automaticamente incluindo manual no idioma selecionado<br>
 <img src="shots/prog.jpg" style="width:100px" alt="loading"/>
 <img src="shots/dica.jpg" style="width:100px" alt="dica"/>
 <img src="shots/manual.jpg" style="width:100px" alt="manual"/><br>
@@ -21,7 +21,7 @@ Rode o comando
 ```
 bash setup
 ```
-Selecione a opção "Desinstalar" na opção que tiver rodando
+Selecione a opção "Desinstalar" na opção que tiver rodando<br>
 <img src="shots/menu.jpg" style="width:100px" alt="menu"/>
 
 # Dependências
